@@ -101,7 +101,7 @@ public class SpaceMissionSimulation extends Simulation {
                             .get("/api/groups/#{groupId}")
                             .header("Authorization", "Bearer #{authToken}")
                             .check(status().is(200))
-                            .check(jsonPath("$.name").is("#{groupName}"))
+                            .check(jsonPath("$.name").is(session -> session.getString("groupName")))
             )
             .pause(Duration.ofMillis(200), Duration.ofMillis(500))
 
